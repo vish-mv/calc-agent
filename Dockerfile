@@ -17,6 +17,11 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the rest of the application
 COPY . .
 
+# AMP's build pipeline rejects images without an explicit non-root USER, and
+# the platform runs agent pods as uid 65534 (nobody) regardless — declare the
+# same uid so build-time checks and runtime behavior match.
+USER 10001
+
 # OPENAI_API_KEY should be supplied at runtime (AMP: add it as an env var on
 # the deploy page). Without it the server still starts; /chat reports the
 # missing key and the !file mount check keeps working.
