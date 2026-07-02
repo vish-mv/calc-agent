@@ -9,7 +9,7 @@ the Agent Management Platform sandbox isolation tiers (runc / gVisor / Kata).
 | Method | Path       | Description                                       |
 |--------|------------|---------------------------------------------------|
 | GET    | `/healthz` | Liveness probe                                    |
-| POST   | `/chat`    | `{"sessionId": "s1", "message": "..."}` → answer  |
+| POST   | `/chat`    | `{"session_id": "s1", "message": "..."}` → answer  |
 
 Special chat commands:
 

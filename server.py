@@ -2,7 +2,7 @@
 
 Endpoints:
     GET  /healthz  - liveness probe
-    POST /chat     - chat with the agent: {"sessionId": "...", "message": "..."}
+    POST /chat     - chat with the agent: {"session_id": "...", "message": "..."}
 
 Special message commands (for platform validation):
     !file  - read the file mounted at FILE_CHECK_PATH (default
@@ -27,8 +27,11 @@ _executor_error = None
 
 
 class ChatRequest(BaseModel):
-    sessionId: str = "default"
+    # Field names mirror the AMP standard chat contract (what the console's
+    # try-it chat UI sends); extra fields are ignored by pydantic's default.
+    session_id: str = "default"
     message: str
+    context: dict = {}
 
 
 class ChatResponse(BaseModel):
