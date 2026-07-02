@@ -1,0 +1,13 @@
+# AMP zero-code tracing — the ONLY hard pin: must match the platform's
+# instrumentation version (cluster currently runs 0.3.0; see the AMP
+# instrumentation version mapping). It pins its own traceloop-sdk/otel deps.
+amp-instrumentation==0.3.0
+
+# Everything else is ranged so pip can resolve around amp-instrumentation's pins.
+langchain>=0.3.20,<0.4
+langchain-openai>=0.3.9,<0.4
+langchain-core>=0.3.45,<0.4
+python-dotenv>=1.0
+duckduckgo-search>=6.3
+fastapi>=0.115,<1
+uvicorn>=0.34,<1
